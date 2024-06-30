@@ -1,0 +1,35 @@
+package com.entity.view;
+
+import com.entity.XushizhangEntity;
+
+import com.baomidou.mybatisplus.annotations.TableName;
+import org.apache.commons.beanutils.BeanUtils;
+import java.lang.reflect.InvocationTargetException;
+
+import java.io.Serializable;
+ 
+
+/**
+ * 序时账
+ * 后端返回视图实体辅助类   
+ * （通常后端关联的表或者自定义的字段需要返回使用）
+ * @author 
+ * @email 
+ */
+@TableName("xushizhang")
+public class XushizhangView  extends XushizhangEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	public XushizhangView(){
+	}
+ 
+ 	public XushizhangView(XushizhangEntity xushizhangEntity){
+ 	try {
+			BeanUtils.copyProperties(this, xushizhangEntity);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 		
+	}
+}
